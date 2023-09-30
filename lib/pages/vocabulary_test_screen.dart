@@ -41,20 +41,27 @@ class _VocabularyTestScreenState extends State<VocabularyTestScreen> {
         alignment: Alignment.center,
         child: Column(
           children: [
-            const Text("Englisches Wort für: ",style: Styling.textStyle),
-             Text(VocabularyManager.randomWord,style: Styling.textStyleWord,),
+            VocabularyManager.selectKey
+                ? const Text("Englisches Wort für: ", style: Styling.textStyle)
+                : const Text("Deutsches Wort für: ", style: Styling.textStyle),
+            Text(
+              VocabularyManager.randomWord,
+              style: Styling.textStyleWord,
+            ),
             InputTextField(labelText: "Deine Antwort", controller: _controller),
-            OutlinedButton(onPressed: () {
-              if(_controller.text.isEmpty) {
-                return;
-              }
-              checkAnswer(_controller.text);
-            }, child: const Text("Vergleichen")),
+            OutlinedButton(
+                onPressed: () {
+                  if (_controller.text.isEmpty) {
+                    return;
+                  }
+                  checkAnswer(_controller.text);
+                },
+                child: const Text("Vergleichen")),
             SizedBox(
                 height: 20,
                 child: Text(resultText,
                     style: TextStyle(
-                      fontSize: 16,
+                        fontSize: 16,
                         fontWeight: FontWeight.w400,
                         color: resultText == "Richtig!"
                             ? Colors.green

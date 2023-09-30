@@ -4,8 +4,10 @@ import 'dart:math';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vokabel_trainer/utils/style.dart';
 
-class VocabularyManager {
+class VocabularyManager{
   static late String randomWord;
+  static late String correctTranslation;
+  static late bool selectKey;
   static Map<String, String> vocabularyMap = {};
 
   static void saveVocabularyMap() async {
@@ -20,11 +22,10 @@ class VocabularyManager {
     if (vocabMapJson != null) {
       Map<String, dynamic> decodedMap = jsonDecode(vocabMapJson);
 
-      vocabularyMap = decodedMap.map((key, value) => MapEntry(key, value.toString()));
+      vocabularyMap =
+          decodedMap.map((key, value) => MapEntry(key, value.toString()));
     }
   }
-
-
 
   static void addVocabulary(final String germanWord, final String englishWord) {
     if (vocabularyMap.containsKey(germanWord)) {
@@ -37,13 +38,19 @@ class VocabularyManager {
   }
 
   static void nextRound() {
-    randomWord = VocabularyManager.vocabularyMap.keys
-        .elementAt(Random().nextInt(VocabularyManager.vocabularyMap.length));
+     selectKey = Random().nextBool();
+    if (selectKey) {
+      randomWord = vocabularyMap.keys
+          .elementAt(Random().nextInt(vocabularyMap.length));
+      correctTranslation = vocabularyMap[randomWord]!;
+    } else {
+      String key = vocabularyMap.keys.elementAt(Random().nextInt(vocabularyMap.length));
+      randomWord = vocabularyMap[key]!;
+      correctTranslation = key;
+    }
   }
 
-
   static bool compare(final String typedWord) {
-    String correctTranslation = vocabularyMap[randomWord]!;
     return typedWord.toLowerCase() == correctTranslation.toLowerCase();
   }
 
