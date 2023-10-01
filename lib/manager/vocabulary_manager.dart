@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vokabel_trainer/utils/style.dart';
 
-class VocabularyManager{
+class VocabularyManager {
   static late String randomWord;
   static late String correctTranslation;
   static late bool selectKey;
@@ -38,13 +38,14 @@ class VocabularyManager{
   }
 
   static void nextRound() {
-     selectKey = Random().nextBool();
+    selectKey = Random().nextBool();
     if (selectKey) {
-      randomWord = vocabularyMap.keys
-          .elementAt(Random().nextInt(vocabularyMap.length));
+      randomWord =
+          vocabularyMap.keys.elementAt(Random().nextInt(vocabularyMap.length));
       correctTranslation = vocabularyMap[randomWord]!;
     } else {
-      String key = vocabularyMap.keys.elementAt(Random().nextInt(vocabularyMap.length));
+      String key =
+          vocabularyMap.keys.elementAt(Random().nextInt(vocabularyMap.length));
       randomWord = vocabularyMap[key]!;
       correctTranslation = key;
     }

@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              "Vokabel Trainer by Samir",
+              "Vokabeltrainer by Samir Ademi",
               style: Styling.textStyle,
             ),
             Padding(

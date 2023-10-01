@@ -34,7 +34,7 @@ class _VocabularyTestScreenState extends State<VocabularyTestScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Vokabel Trainer"),
+        title: const Text("Vokabeltrainer"),
         centerTitle: true,
       ),
       body: Container(
