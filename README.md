@@ -11,8 +11,8 @@ A simple vocabulary trainer that allows you to learn English vocabulary quickly 
 
 
 ## Download
-APK Download
+APK Download for Android
 
 ![App](https://i.ibb.co/r4mmX2G/X5kt-Akq3-PRW.png)
 
-Ios: Build your own app with the flutter source code.
+iOS: Build your own App with the Flutter source code.
